@@ -1,0 +1,35 @@
+<h1>Register Album for <%= @band.name %>!</h1>
+
+<form action="/albums" method="POST">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="album_name">Album Name</label>
+  <input type="text" name="album[name]" id="album_name">
+  <br>
+
+  <label for="band_id">Band Name</label>
+  <select name="album[band_id]" id="album_type">
+      <option value="Select Band Name"></option>
+    <% Band.all.each do |band| %>
+      <option value="<%= band.id %>"
+                  <%="selected" if @band.id == band.id %>>
+                <%= band.name %>
+      </option>
+    <% end %>
+  </select>
+  <br>
+
+  <label for="album_type">Album Type</label>
+  <select name="album[album_type]" id="album_type">
+    <option value="Select Album Type"></option>
+    <% Album::ALBUM_TYPE.each do |type| %>
+      <option value="<%= type %>">
+          <%= type.upcase %>
+      </option>
+    <% end %>
+  </select>
+  <br>
+
+  <input type="submit" value="Register!">
+</form>

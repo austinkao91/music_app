@@ -1,0 +1,10 @@
+<h3>Edit note below!</h3>
+<form action="/tracks/<%= @track.id %>/notes" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+<label>
+  <textarea name="note[body]"></textarea>
+</label>
+
+<input type="submit" value="Post Note!"%>
+</form>

@@ -1,0 +1,7 @@
+<h1>Posted by <%= note.user.username %></h1>
+<p><%= note.body %></p>
+<%= link_to "edit", edit_track_note_url(note.track,note) %>
+<% if note.user_id == current_user.id %>
+  <%= link_to "delete", track_note_url(note.track, note), method: :delete %>
+<% end %>
+<br>
